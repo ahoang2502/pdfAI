@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -28,6 +29,7 @@ export default function RootLayout({
 						inter.className
 					)}
 				>
+					<Toaster />
 					<Navbar />
 					{children}
 				</body>
