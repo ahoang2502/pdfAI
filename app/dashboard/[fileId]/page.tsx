@@ -1,4 +1,4 @@
-import ChatWrapper from "./_components/ChatWrapper";
+import ChatWrapper from "./_components/chat/ChatWrapper";
 import PdfRenderer from "./_components/PdfRenderer";
 import { db } from "@/lib/db";
 
@@ -35,7 +35,7 @@ const FileIdPage = async ({ params }: { params: { fileId: string } }) => {
 
 				{/* Right side */}
 				<div className="shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
-					<ChatWrapper />
+					<ChatWrapper fileId={file.id}/>
 				</div>
 			</div>
 		</div>
