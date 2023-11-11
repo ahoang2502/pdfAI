@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
 
 	// vectorize message
 	const embeddings = new OpenAIEmbeddings({
-		openAIApiKey: process.env.OPEN_API_KEY,
+		openAIApiKey: process.env.OPENAI_API_KEY,
 	});
 
 	// Initialize the Pinecone vector store

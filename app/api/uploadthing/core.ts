@@ -60,7 +60,7 @@ export const ourFileRouter = {
 				const pineconeIndex = pinecone.Index("pdf-ai");
 
 				const embeddings = new OpenAIEmbeddings({
-					openAIApiKey: process.env.OPEN_API_KEY,
+					openAIApiKey: process.env.OPENAI_API_KEY,
 				});
 
 				await PineconeStore.fromDocuments(combinedData, embeddings, {
