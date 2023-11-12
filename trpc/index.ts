@@ -5,6 +5,7 @@ import { z } from "zod";
 import { publicProcedure, router, privateProcedure } from "./trpc";
 import { db } from "@/lib/db";
 import { INFINITE_QUERY_LIMIT } from "@/config/infiniteQuery";
+import { absoluteUrl } from "@/lib/utils";
 
 export const appRouter = router({
 	authCallback: publicProcedure.query(async () => {
@@ -130,12 +131,27 @@ export const appRouter = router({
 			let nextCursor: typeof cursor | undefined = undefined;
 			if (messages.length > limit) {
 				const nextItem = messages.pop();
-				nextCursor= nextItem?.id
+				nextCursor = nextItem?.id;
 			}
 
 			return {
-			messages, nextCursor}
+				messages,
+				nextCursor,
+			};
 		}),
+	createStripeSession: privateProcedure.mutation(async ({ ctx }) => {
+		const { userId } = ctx;
+		if (!userId) throw new TRPCError({ code: "UNAUTHORIZED" });
+
+		const billingUrl = absoluteUrl("/dashboard/billing");
+
+		const dbUser = await db.user.findFirst({
+			where: {
+				id: userId,
+			},
+		});
+		if (!dbUser) throw new TRPCError({ code: "UNAUTHORIZED" });
+	}),
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;
