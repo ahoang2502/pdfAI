@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { buttonVariants } from "./ui/button";
 import UserAccountNav from "./UserAccountNav";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
 	const { getUser } = getKindeServerSession();
@@ -22,7 +23,7 @@ const Navbar = () => {
 						<span>pdfAI.</span>
 					</Link>
 
-					{/* TODO: add mobile navbar */}
+					<MobileNav isAuth={!!user} />
 					<div className="hidden items-center space-x-4 sm:flex">
 						{!user ? (
 							<>

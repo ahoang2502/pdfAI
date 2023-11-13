@@ -14,3 +14,11 @@ export function absoluteUrl(path: string) {
 
 	return `http://localhost:${process.env.PORT ?? 3000}${path}`;
 }
+
+export function constructMetadata({
+	title = "pdfAI - for students",
+	description = "pdfAI is an open-source software that makes chatting with your PDF files easier.",
+	image = "../public/thumbnail.png",
+	icons = "../public/favicon.ico",
+	noIndex = false,
+});
