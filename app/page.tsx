@@ -125,7 +125,7 @@ export default function Home() {
 								Upload your PDF file
 							</span>
 							<span className="mt-2 text-slate-700">
-								We$apos;ll process your file and make it ready for you to chat
+								We&apos;ll process your file and make it ready for you to chat
 								with.
 							</span>
 						</div>
